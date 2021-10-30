@@ -1,7 +1,8 @@
 import { darken, lighten } from 'polished';
 
-const primary = '#F8C843';
+const primary = '#3AEFEC';
 const secondary = '#343F4B';
+const button = "#F3C120"
 const text = '#333';
 const colors = {
   shadow: '#000',
@@ -23,6 +24,12 @@ const colors = {
     dark: darken(0.1, text),
     contrast: '#ffffff',
   },
+  button: {
+    light: lighten(0.05, button),
+    main: button,
+    dark: darken(0.1, button),
+    contrast: '#ffffff',
+  }
 };
 
 export default colors;
