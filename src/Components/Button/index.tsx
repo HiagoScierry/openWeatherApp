@@ -1,17 +1,15 @@
 import React from 'react';
 import { Container, Text } from './styles';
-
-// import { Container } from './styles';
-
 interface IButton {
   text: string;
   action: () => void;
+  color: string
 }
 
-const Button: React.FC<IButton> = ({  text, action }) => {
+const Button: React.FC<IButton> = ({ text, action, color }) => {
   return (
     <Container onPress={action}>
-      <Text>{text}</Text>
+      <Text color={color}>{text}</Text>
     </Container>
   );
 };

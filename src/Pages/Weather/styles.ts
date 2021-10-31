@@ -1,112 +1,126 @@
-import { colors } from '../../Styles';
-import { Entypo, Feather } from '../../Utils'
+import { colors, gradients } from '../../Styles';
+import { Entypo, Feather } from '../../Utils';
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 
+interface PropsContainer {
+  background: string[];
+}
 
-import image from '../../Assets/sunny.png';
+interface PropColorTheme {
+  color: string;
+}
 
-export const Container = styled.View`
+export const Container = styled(LinearGradient).attrs(
+  (props: PropsContainer) => ({
+    colors: props.background,
+    start: { x: 0, y: 0 },
+    end: { x: 0, y: 1 },
+  }),
+)`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
-
-  background-color: ${colors.primary.main};
 `;
 
-export const BarStyle = styled.StatusBar.attrs({
-    backgroundColor: colors.primary.main,
-    color: colors.primary.contrast
-})``
-
 export const WrapperLocation = styled.View`
-    width: 80%;
+  width: 80%;
 
-    margin-top: 30px;
-    margin-bottom: 50PX;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
-`
+export const LocationIcon = styled(Entypo).attrs((props: PropColorTheme) => ({
+  name: 'location-pin',
+  size: 32,
+  color:
+    props.color !== gradients.night[0]
+      ? colors.text.dark
+      : colors.text.contrast,
+}))``;
 
-export const LocationIcon = styled(Entypo).attrs({
-    name: "location-pin",
-    size: 32,
-    color: colors.text.dark
+export const Location = styled.Text<PropColorTheme>`
+  color: ${(props) =>
+    props.color !== gradients.night[0]
+      ? colors.text.dark
+      : colors.text.contrast};
+  font-size: 20px;
+  font-weight: bold;
+`;
 
-})``
+interface PropsWeather {
+  image: () => string;
+}
 
-export const Location = styled.Text`
-
-    color: ${colors.text.dark};
-    font-size: 20px;
-    font-weight: bold;
-
-`
-
-export const CurrentWeather = styled.Image.attrs({
-    source: image
-})`
-    width: 50%;
-    height: 25%;
-    margin-bottom: 40px;
-`
+export const CurrentWeather = styled.Image.attrs((props: PropsWeather) => ({
+  source: props.image,
+}))`
+  width: 50%;
+  height: 25%;
+  margin-bottom: 40px;
+`;
 export const WrapperCurrentWeatherInfo = styled.View`
-    justify-content: center;
-    align-items: center;
-`
+  justify-content: center;
+  align-items: center;
+`;
 
-export const CurrentWeatherInfo = styled.Text`
-    color: ${colors.text.dark};
-    font-size: 48px;
-`
+export const CurrentWeatherInfo = styled.Text<PropColorTheme>`
+  color: ${(props) =>
+    props.color !== gradients.night[0]
+      ? colors.text.dark
+      : colors.text.contrast};
+  font-size: 48px;
+`;
 
-export const CurrentWeatherInfoDescription = styled.Text`
-    color: ${colors.text.main};
-    font-size: 20px;
-`
+export const CurrentWeatherInfoDescription = styled.Text<PropColorTheme>`
+  color: ${(props) =>
+    props.color !== gradients.night[0]
+      ? colors.text.dark
+      : colors.text.contrast};
+  font-size: 20px;
+`;
 
 export const WrapperOtherInfos = styled.View`
-    width: 90%;
+  width: 90%;
 
-    margin-top: 30px;
-    margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-`
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 
 export const WrapperInfo = styled.View`
-    justify-content: center;
-    align-items: center;
-`
+  justify-content: center;
+  align-items: center;
+`;
 
-export const InfoText = styled.Text`
-    color: ${colors.text.main};
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-`
+export const InfoText = styled.Text<PropColorTheme>`
+  color: ${(props) =>
+    props.color !== gradients.night[0]
+      ? colors.text.dark
+      : colors.text.contrast};
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+`;
 
-export const WindIcon = styled(Feather).attrs({
-    name: 'wind',
-    size: 32,
-    color: colors.text.main
-})``
+export const WindIcon = styled(Feather).attrs((prop: PropColorTheme) => ({
+  name: 'wind',
+  size: 32,
+  color: prop.color !== gradients.night[0]
+    ? colors.text.dark
+    : colors.text.contrast,
+}))``;
 
-
-export const DropIcon = styled(Feather).attrs({
-    name: 'droplet',
-    size: 32,
-    color: colors.text.main
-})``
-
-export const SetUserToOtherPage = styled.Text`
-    margin-top: 10px;
-`
-export const InfoTextSecundary = styled.Text`
-    color: ${colors.text.main};
-    font-size: 18px;
-    text-align: center;
-`
+export const DropIcon = styled(Feather).attrs((prop: PropColorTheme) => ({
+  name: 'droplet',
+  size: 32,
+  color: prop.color !== gradients.night[0]
+    ? colors.text.dark
+    : colors.text.contrast,
+}))``;

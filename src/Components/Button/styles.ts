@@ -12,7 +12,11 @@ export const Container = styled.TouchableOpacity`
   background-color: ${colors.button.main};
 `;
 
-export const Text = styled.Text`
+interface PropColorTheme {
+    color: string;
+}
+
+export const Text = styled.Text<PropColorTheme>`
     font-size: 20px;
-    color: ${colors.text.main};
+    color: ${prop => prop.color ? prop.color : colors.text.main };
 `
