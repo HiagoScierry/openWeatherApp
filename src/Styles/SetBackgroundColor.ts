@@ -3,8 +3,7 @@ import { gradients } from './index';
 
 const Background = () => {
   const currentTime = new Date();
-
-  if (currentTime.getHours() > 6 && currentTime.getHours() < 18) {
+  if (currentTime.getHours() >= 6 && currentTime.getHours() < 18) {
     const { currentWeather } = useWeather();
     const todayWeather = currentWeather.weather[0].main;
     if (todayWeather === 'Clear' || todayWeather === 'Clouds') {

@@ -5,7 +5,6 @@ import { Button } from '../../Components';
 import { useWeather } from '../../Context';
 
 import {
-  BarStyle,
   Container,
   CurrentWeather,
   CurrentWeatherInfo,

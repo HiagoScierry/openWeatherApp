@@ -59,19 +59,6 @@ export interface IWeather {
   getCurrentWeather: () => void;
 }
 
-interface IGeolocation {
-  coords: {
-    accuracy: number;
-    altitude: number;
-    heading: number;
-    latitude: number;
-    longitude: number;
-    speed: number;
-  };
-  mocked: boolean;
-  timestamp: number;
-}
-
 const WeatherContext = createContext<IWeather>({
   currentWeather: {
     base: '',
@@ -178,8 +165,6 @@ export function WeatherProvider({ children }) {
         console.log(error)
       }
     });
-
-    console.log('foi');
   };
 
   useEffect(() => {
